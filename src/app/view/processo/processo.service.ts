@@ -44,6 +44,8 @@ export class ProcessoService {
     return this.http.put<Processo>(`${this.baseUrl}/update/${processo.id}`, processo);
   }
 
-
+  viewProcesso(id: number): Observable<Processo> {
+    return this.http.get<any>(`${this.baseUrl}/viewProcesso/${id}`);
+  }
 
 }

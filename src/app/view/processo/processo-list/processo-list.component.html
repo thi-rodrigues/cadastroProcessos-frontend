@@ -1,22 +1,16 @@
 <table class="table" >
   <thead>
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Npu</th>
       <th scope="col">Data Cadastro</th>
-      <th scope="col">Data Visualização</th>
-      <th scope="col">Municipio</th>
       <th scope="col">UF</th>
       <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of processos">
-      <th>{{ p.id }}</th>
+    <tr *ngFor="let p of processos" (click)="showHidden(p.id)">
       <th>{{ p.npu | mask: '0000000-00.0000.0.00.0000' }}</th>
       <th>{{ p.dataCadastro | date: 'dd/MM/yyyy HH:mm:ss' }}</th>
-      <th>{{ p.dataVisualizacao | date: 'dd/MM/yyyy' }}</th>
-      <th>{{ p.municipio }}</th>
       <th>{{ p.uf }}</th>
       <th>
         <button type="button" class="btn btn-info" (click)="editar(p.id)">
@@ -27,6 +21,7 @@
         </button>
       </th>
     </tr>
+    <div *ngIf="visualizado">oi</div>
   </tbody>
 </table>
 <nav aria-label="Page navigation example">
@@ -48,7 +43,6 @@
     </li>
   </ul>
 </nav>
-
 
 <button type="submit" class="btn btn-primary m-10" routerLink="/create">
   <i class="fa fa-plus fa-lg"></i> Adicionar

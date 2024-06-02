@@ -15,6 +15,7 @@ export class ProcessoListComponent implements OnInit {
   totalPages: number[] = [];
   pageNumber: number = 0;
   paginaAtual: number = 0;
+  visualizado: boolean = false;
 
   constructor(
     private processoService: ProcessoService,
@@ -36,6 +37,13 @@ export class ProcessoListComponent implements OnInit {
 
   editar(id: number) {
     this.router.navigate([`/edit/${id}`]);
+  }
+
+  showHidden(idProcesso: number) {
+    this.visualizado = !this.visualizado;
+    this.processoService.viewProcesso(idProcesso).subscribe(result => {
+
+    });
   }
 
   findAll(page: number) {
