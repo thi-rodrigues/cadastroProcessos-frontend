@@ -10,9 +10,7 @@ const routes: Routes = [
     path: '',
     redirectTo: 'list',
     pathMatch: 'full'
-  }, 
-  // { path: 'inicio',   component: HomeComponent      },
-  // { path: 'teste',    component: AppComponent       },
+  },
   { path: 'list',    component: ProcessoListComponent       },
   { path: 'create',    component: ProcessoCreateComponent       },
 ];

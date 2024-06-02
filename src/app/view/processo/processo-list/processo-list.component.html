@@ -4,7 +4,7 @@
       <th scope="col">ID</th>
       <th scope="col">Npu</th>
       <th scope="col">Data Cadastro</th>
-      <th scope="col">dataVisualizacao</th>
+      <th scope="col">Data Visualização</th>
       <th scope="col">Municipio</th>
       <th scope="col">UF</th>
       <th scope="col">Ações</th>
@@ -13,14 +13,24 @@
   <tbody>
     <tr *ngFor="let p of processos">
       <th>{{ p.id }}</th>
-      <th>{{ p.npu }}</th>
+      <th>{{ p.npu | mask: '0000000-00.0000.0.00.0000' }}</th>
       <th>{{ p.dataCadastro | date: 'dd/MM/yyyy HH:mm:ss' }}</th>
-      <th>{{ p.dataVisualizacao }}</th>
+      <th>{{ p.dataVisualizacao | date: 'dd/MM/yyyy' }}</th>
       <th>{{ p.municipio }}</th>
       <th>{{ p.uf }}</th>
-      <th>Editar / Exlcuir</th>
+      <th>
+        <button type="button" class="btn btn-info" routerLink="/">
+          <i class="fa fa-pencil"></i>
+        </button>
+        <button type="button" class="btn btn-danger ml-10" (click)="delete(p.id)">
+          <i class="fa fa-trash"></i>
+        </button>
+      </th>
     </tr>
   </tbody>
 </table>
 
-<button type="submit" class="btn btn-primary" routerLink="/create">Add</button>
+<button type="submit" class="btn btn-primary m-10" routerLink="/create">
+  <i class="fa fa-plus fa-lg"></i> Add
+</button>
+

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
 import { HttpClient } from '@angular/common/http';
+import { Processo } from "src/app/model/processo";
 
 @Injectable({
   providedIn: 'root'
@@ -27,9 +28,13 @@ export class ProcessoService {
     return this.http.get<any>(`${this.baseUrl}/municipios/${uf}`);
   }
 
-  // criarProcesso(processo: Processo): Observable<Processo> {
-  //   return this.http.post<Processo>(`${this.baseUrl}`, processo);
-  // }
+  saveProcesso(processo: Processo): Observable<Processo> {
+    return this.http.post<Processo>(`${this.baseUrl}/save`, processo);
+  }
+
+  deleteById(id: number): Observable<any> {
+    return this.http.delete<any>(`${this.baseUrl}/delete/${id}`);
+  }
 
   // atualizaraProcesso(processo: Processo): Observable<Processo> {
   //   return this.http.put<Processo>(`${this.baseUrl}/${processo.id}`, processo);
@@ -39,8 +44,5 @@ export class ProcessoService {
   //   return this.http.get<any>(`${this.baseUrl}/${id}`);
   // }
 
-  // excluirProcessosPorId(id: number): Observable<any> {
-  //   return this.http.delete<any>(`${this.baseUrl}/${id}`);
-  // }
 
 }

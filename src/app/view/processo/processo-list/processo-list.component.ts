@@ -25,4 +25,12 @@ export class ProcessoListComponent implements OnInit {
     });
   }
 
+  delete(id: number) {
+    this.processoService.deleteById(id).subscribe(result => {
+      this.ngOnInit();
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
 }

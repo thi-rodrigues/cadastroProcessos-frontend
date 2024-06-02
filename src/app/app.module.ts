@@ -14,6 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProcessoListComponent } from './view/processo/processo-list/processo-list.component';
 import { ProcessoCreateComponent } from './view/processo/processo-create/processo-create.component';
 
+import { NgxMaskModule } from 'ngx-mask';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +34,7 @@ import { ProcessoCreateComponent } from './view/processo/processo-create/process
     FormsModule,
     RouterLink,
     ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
   ],
   providers: [RouterLink],
   bootstrap: [AppComponent]

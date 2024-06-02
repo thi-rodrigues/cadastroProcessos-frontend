@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Municipio } from 'src/app/model/municipio';
+import { Processo } from 'src/app/model/processo';
 import { Uf } from 'src/app/model/uf';
 import { ProcessoService } from '../processo.service';
 
@@ -38,14 +39,18 @@ export class ProcessoCreateComponent implements OnInit {
 
   findMunicipios() {
     let uf = this.processoForm.value.uf;
-    this.processoService.findMunicipios(uf.sigla).subscribe(result => {
+    this.processoService.findMunicipios(uf).subscribe(result => {
       this.municipios = result;
     });
   }
 
   save() {
     console.log(this.processoForm.value);
+    let processo: Processo = this.processoForm.value;
 
+    this.processoService.saveProcesso(processo).subscribe(result => {
+      console.log(result);
+    });
   }
 
 }
