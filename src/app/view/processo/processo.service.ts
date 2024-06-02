@@ -16,8 +16,8 @@ export class ProcessoService {
     private http: HttpClient
   ) {};
 
-  buscarProcessos(): Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}`);
+  findAllProcessos(page: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}?page=${page}`);
   }
 
   findUfs(): Observable<any> {

@@ -4,6 +4,7 @@ import { Municipio } from 'src/app/model/municipio';
 import { Processo } from 'src/app/model/processo';
 import { Uf } from 'src/app/model/uf';
 import { ProcessoService } from '../processo.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-processo-create',
@@ -19,7 +20,8 @@ export class ProcessoCreateComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private processoService: ProcessoService
+    private processoService: ProcessoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -49,7 +51,7 @@ export class ProcessoCreateComponent implements OnInit {
     let processo: Processo = this.processoForm.value;
 
     this.processoService.saveProcesso(processo).subscribe(result => {
-      console.log(result);
+      this.router.navigate(['/list'])
     });
   }
 

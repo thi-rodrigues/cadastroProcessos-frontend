@@ -12,18 +12,18 @@ export class ProcessoListComponent implements OnInit {
 
   public processos: Processo[] = [];
 
+  totalPages: number[] = [];
+  pageNumber: number = 0;
+  paginaAtual: number = 0;
+
   constructor(
     private processoService: ProcessoService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
-    this.processoService.buscarProcessos().subscribe(result => {
-      this.processos = result.content;
-      console.log(this.processos);
-    }, (error) => {
-      console.log(error);
-    });
+    this.totalPages = [];
+    this.findAll(this.pageNumber);
   }
 
   delete(id: number) {
@@ -36,6 +36,25 @@ export class ProcessoListComponent implements OnInit {
 
   editar(id: number) {
     this.router.navigate([`/edit/${id}`]);
+  }
+
+  findAll(page: number) {
+    this.processoService.findAllProcessos(page).subscribe(result => {
+      this.processos = result.content;
+
+      for(var i=0; i < result.totalPages; i++) {
+        this.totalPages[i] = i;
+      }
+    }, (error) => {
+      console.log(error);
+    });
+  }
+
+  page(page: number) {
+    if (page >= 0) {
+      this.paginaAtual = page;
+      this.findAll(page);
+    }
   }
 
 }
