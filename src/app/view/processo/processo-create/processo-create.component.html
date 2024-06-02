@@ -1,0 +1,28 @@
+<form [formGroup]="processoForm" (ngSubmit)="save()">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">NPU</label>
+        <input type="text" class="form-control" id="" formControlName="npu"
+          placeholder="1111111-11.1111.1.11.1111">
+    </div>
+
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Data de visualizaçãoPU</label>
+        <input type="text" class="form-control" id="" formControlName="dataVisualizacao"
+        placeholder="">
+    </div>
+
+    <select class="form-select" (change)="findMunicipios()" formControlName="uf">
+        <option [ngValue]="null" selected> Selecione </option>
+        <option *ngFor="let uf of ufs" [ngValue]="uf">{{ uf.sigla }}</option>
+    </select>
+
+    <select class="form-select" formControlName="municipio">
+        <option selected>Selecione</option>
+        <option *ngFor="let m of municipios" [ngValue]="m">{{ m.nome }}</option>
+    </select>
+
+    <button type="submit" class="btn btn-success">Save</button>
+    <button type="button" class="btn btn-info" routerLink="/">Back</button>
+</form>
+
+

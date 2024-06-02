@@ -2,23 +2,25 @@
   <thead>
     <tr>
       <th scope="col">ID</th>
-      <th scope="col">Nome</th>
       <th scope="col">Npu</th>
       <th scope="col">Data Cadastro</th>
       <th scope="col">dataVisualizacao</th>
-      <th scope="col">municipio</th>
+      <th scope="col">Municipio</th>
       <th scope="col">UF</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let p of processos">
       <th>{{ p.id }}</th>
-      <th>{{ p.nome }}</th>
       <th>{{ p.npu }}</th>
       <th>{{ p.dataCadastro | date: 'dd/MM/yyyy HH:mm:ss' }}</th>
       <th>{{ p.dataVisualizacao }}</th>
       <th>{{ p.municipio }}</th>
       <th>{{ p.uf }}</th>
+      <th>Editar / Exlcuir</th>
     </tr>
   </tbody>
 </table>
+
+<button type="submit" class="btn btn-primary" routerLink="/create">Add</button>

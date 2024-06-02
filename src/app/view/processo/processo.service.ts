@@ -19,6 +19,14 @@ export class ProcessoService {
     return this.http.get<any>(`${this.baseUrl}`);
   }
 
+  findUfs(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/ufs`);
+  }
+
+  findMunicipios(uf: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/municipios/${uf}`);
+  }
+
   // criarProcesso(processo: Processo): Observable<Processo> {
   //   return this.http.post<Processo>(`${this.baseUrl}`, processo);
   // }

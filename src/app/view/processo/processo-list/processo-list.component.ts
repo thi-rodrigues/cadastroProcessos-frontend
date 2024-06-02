@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Processo } from 'src/app/model/processo';
 import { ProcessoService } from '../processo.service';
 
@@ -12,7 +13,7 @@ export class ProcessoListComponent implements OnInit {
   public processos: Processo[] = [];
 
   constructor(
-    private processoService: ProcessoService
+    private processoService: ProcessoService,
   ) { }
 
   ngOnInit(): void {
