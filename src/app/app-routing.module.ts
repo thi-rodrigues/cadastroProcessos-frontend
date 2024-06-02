@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './view/home/home.component';
 import { ProcessoCreateComponent } from './view/processo/processo-create/processo-create.component';
 import { ProcessoListComponent } from './view/processo/processo-list/processo-list.component';
+import { ProcessoEditComponent } from './view/processo/processo-edit/processo-edit.component';
 
 const routes: Routes = [
   {
@@ -12,7 +11,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   { path: 'list',    component: ProcessoListComponent       },
-  { path: 'create',    component: ProcessoCreateComponent       },
+  { path: 'create',    component: ProcessoCreateComponent   },
+  { path: 'edit/:id',    component: ProcessoEditComponent       },
 ];
 
 @NgModule({

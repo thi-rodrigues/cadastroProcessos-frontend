@@ -19,7 +19,7 @@
       <th>{{ p.municipio }}</th>
       <th>{{ p.uf }}</th>
       <th>
-        <button type="button" class="btn btn-info" routerLink="/">
+        <button type="button" class="btn btn-info" (click)="editar(p.id)">
           <i class="fa fa-pencil"></i>
         </button>
         <button type="button" class="btn btn-danger ml-10" (click)="delete(p.id)">
@@ -31,6 +31,6 @@
 </table>
 
 <button type="submit" class="btn btn-primary m-10" routerLink="/create">
-  <i class="fa fa-plus fa-lg"></i> Add
+  <i class="fa fa-plus fa-lg"></i> Adicionar
 </button>
 

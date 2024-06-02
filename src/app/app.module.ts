@@ -15,6 +15,7 @@ import { ProcessoListComponent } from './view/processo/processo-list/processo-li
 import { ProcessoCreateComponent } from './view/processo/processo-create/processo-create.component';
 
 import { NgxMaskModule } from 'ngx-mask';
+import { ProcessoEditComponent } from './view/processo/processo-edit/processo-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { NgxMaskModule } from 'ngx-mask';
     NavigationComponent,
     HomeComponent,
     ProcessoListComponent,
-    ProcessoCreateComponent
+    ProcessoCreateComponent,
+    ProcessoEditComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Processo } from 'src/app/model/processo';
 import { ProcessoService } from '../processo.service';
 
@@ -14,6 +14,7 @@ export class ProcessoListComponent implements OnInit {
 
   constructor(
     private processoService: ProcessoService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -26,11 +27,15 @@ export class ProcessoListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.processoService.deleteById(id).subscribe(result => {
+    this.processoService.deleteById(id).subscribe(() => {
       this.ngOnInit();
     }, (error) => {
       console.log(error);
     });
+  }
+
+  editar(id: number) {
+    this.router.navigate([`/edit/${id}`]);
   }
 
 }

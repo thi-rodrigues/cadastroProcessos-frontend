@@ -36,13 +36,14 @@ export class ProcessoService {
     return this.http.delete<any>(`${this.baseUrl}/delete/${id}`);
   }
 
-  // atualizaraProcesso(processo: Processo): Observable<Processo> {
-  //   return this.http.put<Processo>(`${this.baseUrl}/${processo.id}`, processo);
-  // }
+  findById(id: number): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/find/${id}`);
+  }
 
-  // buscarProcessosPorId(id: string): Observable<any> {
-  //   return this.http.get<any>(`${this.baseUrl}/${id}`);
-  // }
+  updateProcesso(processo: Processo): Observable<Processo> {
+    return this.http.put<Processo>(`${this.baseUrl}/update/${processo.id}`, processo);
+  }
+
 
 
 }
