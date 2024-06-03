@@ -28,8 +28,11 @@ export class ProcessoService {
     return this.http.get<any>(`${this.baseUrl}/municipios/${uf}`);
   }
 
-  saveProcesso(processo: Processo): Observable<Processo> {
-    return this.http.post<Processo>(`${this.baseUrl}/save`, processo);
+  saveProcesso(processo: Processo, file: File ): Observable<Processo> {
+    const formData = new FormData();
+    formData.append('processo', JSON.stringify(processo));
+    formData.append('file', file);
+    return this.http.post<Processo>(`${this.baseUrl}/save`, formData);
   }
 
   deleteById(id: number): Observable<any> {

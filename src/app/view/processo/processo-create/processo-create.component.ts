@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Municipio } from 'src/app/model/municipio';
 import { Processo } from 'src/app/model/processo';
@@ -17,6 +17,7 @@ export class ProcessoCreateComponent implements OnInit {
 
   public ufs: Uf[] = [];
   public municipios: Municipio[] = [];
+  file: File;
 
   constructor(
     private fb: FormBuilder,
@@ -27,7 +28,6 @@ export class ProcessoCreateComponent implements OnInit {
   ngOnInit(): void {
     this.processoForm = this.fb.group({
       npu: [null],
-      dataVisualizacao: [null],
       uf: this.findUfs(),
       municipio: [null],
     });
@@ -50,9 +50,19 @@ export class ProcessoCreateComponent implements OnInit {
     console.log(this.processoForm.value);
     let processo: Processo = this.processoForm.value;
 
-    this.processoService.saveProcesso(processo).subscribe(result => {
+    this.processoService.saveProcesso(processo, this.file).subscribe(result => {
       this.router.navigate(['/list'])
     });
+  }
+
+  fileSelect(e: any) {
+    this.file = null;
+
+    if (e.target.files[0].type.includes('pdf')) {
+      this.file = e.target.files[0];
+    } else {
+      console.log('não suportado');
+    }
   }
 
 }
