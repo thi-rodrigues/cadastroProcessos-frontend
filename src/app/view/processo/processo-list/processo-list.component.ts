@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { Processo } from 'src/app/model/processo';
 import { ProcessoService } from '../processo.service';
-
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
+import { MeuModalComponent } from '../../../components/modal/meu-modal.component';
 @Component({
   selector: 'app-processo-list',
   templateUrl: './processo-list.component.html',
@@ -17,9 +18,21 @@ export class ProcessoListComponent implements OnInit {
   paginaAtual: number = 0;
   visualizado: boolean = false;
 
+  public comoFechouModal: string = '';
+
+  private opcoesModal: NgbModalOptions =
+    {
+      backdrop: true,
+      centered: true,
+      backdropClass: 'backdrop-modal',
+      windowClass: 'position-modal',
+      size: 'lg'
+    };
+
   constructor(
     private processoService: ProcessoService,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -39,18 +52,11 @@ export class ProcessoListComponent implements OnInit {
     this.router.navigate([`/edit/${id}`]);
   }
 
-  showHidden(idProcesso: number) {
-    this.visualizado = !this.visualizado;
-    this.processoService.viewProcesso(idProcesso).subscribe(result => {
-
-    });
-  }
-
   findAll(page: number) {
     this.processoService.findAllProcessos(page).subscribe(result => {
       this.processos = result.content;
 
-      for(var i=0; i < result.totalPages; i++) {
+      for (var i = 0; i < result.totalPages; i++) {
         this.totalPages[i] = i;
       }
     }, (error) => {
@@ -63,6 +69,22 @@ export class ProcessoListComponent implements OnInit {
       this.paginaAtual = page;
       this.findAll(page);
     }
+  }
+
+  open(idProcesso: number) {
+    this.processoService.viewProcesso(idProcesso).subscribe(result => {
+
+    });
+
+    this.processoService.findById(idProcesso).subscribe(result => {
+      // console.log(result);
+      localStorage.setItem('processo', JSON.stringify(result));
+      this.modalService.open(MeuModalComponent, this.opcoesModal).result.then((result) => {
+
+      }, (error) => {
+
+      });
+    })
   }
 
 }

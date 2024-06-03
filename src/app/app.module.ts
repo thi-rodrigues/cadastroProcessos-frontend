@@ -17,6 +17,9 @@ import { ProcessoCreateComponent } from './view/processo/processo-create/process
 import { NgxMaskModule } from 'ngx-mask';
 import { ProcessoEditComponent } from './view/processo/processo-edit/processo-edit.component';
 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MeuModalComponent } from './components/modal/meu-modal.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +29,8 @@ import { ProcessoEditComponent } from './view/processo/processo-edit/processo-ed
     HomeComponent,
     ProcessoListComponent,
     ProcessoCreateComponent,
-    ProcessoEditComponent
+    ProcessoEditComponent,
+    MeuModalComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +41,7 @@ import { ProcessoEditComponent } from './view/processo/processo-edit/processo-ed
     RouterLink,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
+    NgbModule,
   ],
   providers: [RouterLink],
   bootstrap: [AppComponent]

@@ -1,0 +1,33 @@
+<div class="modal-header titulo-modal">
+  <div class="titulo-texto">
+    <div> Processo {{ processo.id}}</div>
+  </div>
+</div>
+<div class="modal-body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Npu</th>
+        <th scope="col">Data Cadastro</th>
+        <th scope="col">Data Visualização</th>
+        <th scope="col">Município</th>
+        <th scope="col">UF</th>
+        <th scope="col">Download</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ processo.npu | mask: '0000000-00.0000.0.00.0000' }}</td>
+        <td>{{ processo.dataCadastro | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td>{{ processo.dataVisualizacao | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td>{{ processo.municipio }}</td>
+        <td>{{ processo.uf }}</td>
+        <td>{{ processo.pathUploadDocumento ? 'Download' : '' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="modal-footer">
+  <button #focar type="button" class="btn" (click)="activeModal.close()">Fechar</button>
+</div>

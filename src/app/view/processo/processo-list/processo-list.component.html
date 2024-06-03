@@ -8,7 +8,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let p of processos" (click)="showHidden(p.id)">
+    <tr *ngFor="let p of processos" (click)="open(p.id)">
       <th>{{ p.npu | mask: '0000000-00.0000.0.00.0000' }}</th>
       <th>{{ p.dataCadastro | date: 'dd/MM/yyyy HH:mm:ss' }}</th>
       <th>{{ p.uf }}</th>
@@ -21,7 +21,6 @@
         </button>
       </th>
     </tr>
-    <div *ngIf="visualizado">oi</div>
   </tbody>
 </table>
 <nav aria-label="Page navigation example">
@@ -48,3 +47,4 @@
   <i class="fa fa-plus fa-lg"></i> Adicionar
 </button>
 
+<!-- <button class="btn btn-lg btn-outline-primary" (click)="open()">Launch demo modal</button> -->
