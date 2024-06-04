@@ -22,7 +22,15 @@
         <td>{{ processo.dataVisualizacao | date: 'dd/MM/yyyy HH:mm:ss' }}</td>
         <td>{{ processo.municipio }}</td>
         <td>{{ processo.uf }}</td>
-        <td>{{ processo.pathUploadDocumento ? 'Download' : '' }}</td>
+        <td class="ptb-2">
+          <span *ngIf="processo.pathUploadDocumento">
+            <a href="fileUrl" download="file1.txt" target="_blank" rel="noopener noreferrer">
+              <button type="submit" class="btn btn-secondary" (click)="download(processo.id, processo.pathUploadDocumento)">
+                <i class="fa fa-download fa-lg"></i>
+              </button>
+            </a>
+          </span>
+        </td>
       </tr>
     </tbody>
   </table>

@@ -73,16 +73,16 @@ export class ProcessoListComponent implements OnInit {
 
   open(idProcesso: number) {
     this.processoService.viewProcesso(idProcesso).subscribe(result => {
-
+      this.findById(idProcesso);
     });
+  }
 
+  findById(idProcesso: number) {
     this.processoService.findById(idProcesso).subscribe(result => {
-      // console.log(result);
       localStorage.setItem('processo', JSON.stringify(result));
       this.modalService.open(MeuModalComponent, this.opcoesModal).result.then((result) => {
-
       }, (error) => {
-
+        console.log(error);
       });
     })
   }

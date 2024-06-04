@@ -18,6 +18,7 @@ export class ProcessoEditComponent implements OnInit {
   public ufs: Uf[] = [];
   public municipios: Municipio[] = [];
   public processo?: Processo;
+  file: File;
 
   constructor(
     private fb: FormBuilder,
@@ -35,7 +36,6 @@ export class ProcessoEditComponent implements OnInit {
     this.processoForm = this.fb.group({
       id: [processo.id],
       npu: [processo.npu],
-      dataVisualizacao: [processo.dataVisualizacao],
       uf: [processo.uf],
       municipio: [processo.municipio],
     });
@@ -64,9 +64,19 @@ export class ProcessoEditComponent implements OnInit {
 
   edit() {
     let processo: Processo = this.processoForm.value;
-    this.processoService.updateProcesso(processo).subscribe(result => {
+    this.processoService.updateProcesso(processo, this.file).subscribe(result => {
       this.router.navigate(["/list"])
     });
+  }
+
+  fileSelect(e: any) {
+    this.file = null;
+
+    if (e.target.files[0].type.includes('pdf')) {
+      this.file = e.target.files[0];
+    } else {
+      console.log('não suportado');
+    }
   }
 
 }

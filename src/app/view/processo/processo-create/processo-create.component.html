@@ -1,31 +1,29 @@
 <form [formGroup]="processoForm" (ngSubmit)="save()">
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">NPU</label>
-        <input type="text" class="form-control" id="" formControlName="npu"
-          placeholder="1111111-11.1111.1.11.1111" mask="0000000-00.0000.0.00.0000">
-    </div>
-
-    <select class="form-select" (change)="findMunicipios()" formControlName="uf">
-        <option [ngValue]="null" selected> Selecione </option>
-        <option *ngFor="let uf of ufs" [ngValue]="uf.sigla">{{ uf.sigla }}</option>
-    </select>
-
-    <select class="form-select" formControlName="municipio">
-        <option selected>Selecione</option>
-        <option *ngFor="let m of municipios" [ngValue]="m.nome">{{ m.nome }}</option>
-    </select>
-
-    <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">Anexar</label>
-      <input type="file" class="form-control" id="" (change)="fileSelect($event)" >
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">NPU</label>
+    <input type="text" class="form-control" id="" formControlName="npu" placeholder="1111111-11.1111.1.11.1111"
+      mask="0000000-00.0000.0.00.0000">
   </div>
 
-    <button type="submit" class="btn btn-success">
-      <i class="fa fa-save fa-lg"></i> Salvar
-    </button>
-    <button type="button" class="btn btn-warning m-10" routerLink="/">
-      <i class="fa fa-arrow-left fa-lg"></i> Voltar
-    </button>
+  <select class="form-select" (change)="findMunicipios()" formControlName="uf">
+    <option [ngValue]="null" selected> Selecione </option>
+    <option *ngFor="let uf of ufs" [ngValue]="uf.sigla">{{ uf.sigla }}</option>
+  </select>
+
+  <select class="form-select" formControlName="municipio">
+    <option selected>Selecione</option>
+    <option *ngFor="let m of municipios" [ngValue]="m.nome">{{ m.nome }}</option>
+  </select>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Anexar</label>
+    <input type="file" class="form-control" id="" (change)="fileSelect($event)">
+  </div>
+
+  <button type="submit" class="btn btn-success">
+    <i class="fa fa-save fa-lg"></i> Salvar
+  </button>
+  <button type="button" class="btn btn-warning m-10" routerLink="/">
+    <i class="fa fa-arrow-left fa-lg"></i> Voltar
+  </button>
 </form>
-
-

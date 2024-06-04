@@ -13,3 +13,7 @@
 .fw-b {
   font-weight: bold;
 }
+
+.ptb-2 {
+  padding: 2px 0 2px 0 !important;
+}

@@ -28,7 +28,7 @@ export class ProcessoService {
     return this.http.get<any>(`${this.baseUrl}/municipios/${uf}`);
   }
 
-  saveProcesso(processo: Processo, file: File ): Observable<Processo> {
+  saveProcesso(processo: Processo, file: File): Observable<Processo> {
     const formData = new FormData();
     formData.append('processo', JSON.stringify(processo));
     formData.append('file', file);
@@ -43,12 +43,21 @@ export class ProcessoService {
     return this.http.get<any>(`${this.baseUrl}/find/${id}`);
   }
 
-  updateProcesso(processo: Processo): Observable<Processo> {
-    return this.http.put<Processo>(`${this.baseUrl}/update/${processo.id}`, processo);
+  updateProcesso(processo: Processo, file: File): Observable<Processo> {
+    const formData = new FormData();
+    formData.append('processo', JSON.stringify(processo));
+    formData.append('file', file);
+    return this.http.put<Processo>(`${this.baseUrl}/update/${processo.id}`, formData);
   }
 
   viewProcesso(id: number): Observable<Processo> {
     return this.http.get<any>(`${this.baseUrl}/viewProcesso/${id}`);
+  }
+
+  download(url: string): Observable<Blob> {
+    return this.http.get(url, {
+      responseType: 'blob'
+    })
   }
 
 }
