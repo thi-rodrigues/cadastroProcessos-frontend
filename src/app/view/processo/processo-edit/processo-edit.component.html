@@ -1,27 +1,33 @@
 <form [formGroup]="processoForm" (ngSubmit)="edit()" *ngIf="processoForm">
   <div class="mb-3">
-      <label for="exampleFormControlInput1" class="form-label">NPU</label>
-      <input type="text" class="form-control" id="" formControlName="npu"
-        placeholder="1111111-11.1111.1.11.1111" mask="0000000-00.0000.0.00.0000">
+    <label for="exampleFormControlInput1" class="form-label">NPU</label>
+    <input type="text" class="form-control" id="" formControlName="npu" placeholder="1111111-11.1111.1.11.1111"
+      mask="0000000-00.0000.0.00.0000">
   </div>
 
-  <select class="form-select" (change)="findMunicipios()" formControlName="uf" >
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">UF</label>
+    <select class="form-select" (change)="findMunicipios()" formControlName="uf">
       <option [ngValue]="null" selected> Selecione </option>
-      <option *ngFor="let uf of ufs" [ngValue]="uf.sigla" >
+      <option *ngFor="let uf of ufs" [ngValue]="uf.sigla">
         {{ uf.sigla }}
       </option>
-  </select>
+    </select>
+  </div>
 
-  <select class="form-select" formControlName="municipio" >
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Municipio</label>
+    <select class="form-select" formControlName="municipio">
       <option [ngValue]="null" selected>Selecione</option>
-      <option *ngFor="let m of municipios" [ngValue]="m.nome" >
+      <option *ngFor="let m of municipios" [ngValue]="m.nome">
         {{ m.nome }}
       </option>
-  </select>
+    </select>
+  </div>
 
   <div class="mb-3">
     <label for="exampleFormControlInput1" class="form-label">Anexar</label>
-    <input type="file" class="form-control" id="" (change)="fileSelect($event)">
+    <input type="file" class="form-control" id="" (change)="fileSelect($event)" formControlName="pathUploadDocumento">
   </div>
 
   <button type="submit" class="btn btn-success">
@@ -31,5 +37,3 @@
     <i class="fa fa-arrow-left fa-lg"></i> Cancelar
   </button>
 </form>
-
-

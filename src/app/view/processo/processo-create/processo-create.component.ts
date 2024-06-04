@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Municipio } from 'src/app/model/municipio';
 import { Processo } from 'src/app/model/processo';
 import { Uf } from 'src/app/model/uf';
@@ -18,6 +18,8 @@ export class ProcessoCreateComponent implements OnInit {
   public ufs: Uf[] = [];
   public municipios: Municipio[] = [];
   file: File;
+
+  alert = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,12 +49,17 @@ export class ProcessoCreateComponent implements OnInit {
   }
 
   save() {
-    console.log(this.processoForm.value);
-    let processo: Processo = this.processoForm.value;
+    this.alert = false;
+    if (this.processoForm.valid && this.file) {
+      let processo: Processo = this.processoForm.value;
 
-    this.processoService.saveProcesso(processo, this.file).subscribe(result => {
-      this.router.navigate(['/list'])
-    });
+      this.processoService.saveProcesso(processo, this.file).subscribe(result => {
+        this.router.navigate(['/list'])
+      });
+    } else {
+      console.log('oi');
+      this.alert = true;
+    }
   }
 
   fileSelect(e: any) {
@@ -63,6 +70,10 @@ export class ProcessoCreateComponent implements OnInit {
     } else {
       console.log('não suportado');
     }
+  }
+
+  close() {
+    this.alert = !this.alert;
   }
 
 }

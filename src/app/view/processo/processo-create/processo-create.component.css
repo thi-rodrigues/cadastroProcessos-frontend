@@ -1,0 +1,8 @@
+.alert-new {
+  display: flex;
+  justify-content: end;
+  margin-right: 20px;
+  top: 0;
+  position: absolute;
+  right: 0;
+}

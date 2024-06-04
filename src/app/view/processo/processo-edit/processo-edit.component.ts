@@ -38,6 +38,7 @@ export class ProcessoEditComponent implements OnInit {
       npu: [processo.npu],
       uf: [processo.uf],
       municipio: [processo.municipio],
+      pathUploadDocumento: [processo.pathUploadDocumento],
     });
   }
 
@@ -58,6 +59,8 @@ export class ProcessoEditComponent implements OnInit {
   find(id: number) {
     this.processoService.findById(id).subscribe(result => {
       this.processo = result;
+      // console.log(result);
+
       this.createForm(result);
     });
   }

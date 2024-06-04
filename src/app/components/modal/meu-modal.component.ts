@@ -29,10 +29,9 @@ export class MeuModalComponent implements AfterViewInit, OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(JSON.parse(localStorage.getItem('processo')))
+    // console.log(JSON.parse(localStorage.getItem('processo')))
     let processo: Processo = JSON.parse(localStorage.getItem('processo'));
     this.addProcesso(processo);
-    this.download(null, null);
   }
 
   ngAfterViewInit() {
@@ -63,24 +62,5 @@ export class MeuModalComponent implements AfterViewInit, OnInit {
     }, (error) => {
       console.log(error);
     });
-
-    // const data = 'some text';
-    // const blob = new Blob([data], { type: 'application/octet-stream' });
-
-    // this.fileUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(blob));
-    // console.log(this.fileUrl);
-
-    // this.processoService
-    // .download('/downloads/archive.zip')
-    // .subscribe(blob => {
-    //   const a = document.createElement('a')
-    //   const objectUrl = URL.createObjectURL(blob)
-    //   a.href = objectUrl
-    //   a.download = 'archive.zip';
-    //   a.click();
-    //   URL.revokeObjectURL(objectUrl);
-    // })
-
-
   }
 }

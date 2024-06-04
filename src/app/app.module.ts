@@ -19,6 +19,7 @@ import { ProcessoEditComponent } from './view/processo/processo-edit/processo-ed
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MeuModalComponent } from './components/modal/meu-modal.component';
+import { NgbAlertModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { MeuModalComponent } from './components/modal/meu-modal.component';
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
     NgbModule,
+    NgbAlertModule,
   ],
   providers: [RouterLink],
   bootstrap: [AppComponent]
